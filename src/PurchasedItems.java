@@ -13,7 +13,7 @@ public class PurchasedItems {
 
     public double getTotalCost() {
         double total = 0.0;
-        for (int i = 0; i < items.length(); i++) {
+        for (int i = 0; i < items.size(); i++) {
             StoreItem indexItem = items.get(i);
             double itemPrice = indexItem.getItemPrice();
             total += itemPrice;
@@ -23,7 +23,7 @@ public class PurchasedItems {
 
     public boolean containsItem(StoreItem itemCode) {
         StoreItem matchItemCode = itemCode.getItemCode();
-        for (int i = 0; i < items.length(); i++) {
+        for (int i = 0; i < items.size(); i++) {
             StoreItem indexItem = items.get(i);
             String indexItemCode = indexItem.getItemCode();
             if (matchItemCode == indexItemCode) {

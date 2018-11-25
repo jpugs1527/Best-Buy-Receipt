@@ -1,6 +1,7 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class BestBuyReceiptMain {
   public static void main(String[] args) {
@@ -14,7 +15,7 @@ public class BestBuyReceiptMain {
       StoreItem item = new StoreItem("4028", "Samsung S9 (unlocked) Midnight Black 64 GB", "$719.99");
       items.addItem(item);
     }
-    for (int i = 0; i <= items.length(); i++) {
+    for (int i = 0; i <= items.size(); i++) {
       System.out.println(items.get(i));
     }
 
