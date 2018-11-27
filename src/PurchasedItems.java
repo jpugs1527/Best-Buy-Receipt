@@ -33,16 +33,24 @@ public class PurchasedItems {
         return false;
     }
 
-    // public void reset() {
+    public void reset() {
+        items.removeAll(items);
+    }
 
-    // }
+    public boolean hasNext() {
+        boolean next = false;
+        for (int i = 1; i < this.items.size(); i++) {
+            if (this.items.get(i) != null) {
+                next = true;
+            } else {
+                next = false;
+            }
+        }
+        return next;
+    }
 
-    // public boolean hasNext() {
-    // return true;
-    // }
-
-    // public StoreItem getNext() {
-    // StoreItem item = new StoreItem();
-    // return item;
-    // }
+    public StoreItem getNext() {
+        StoreItem item = new StoreItem();
+        return item;
+    }
 }
