@@ -38,15 +38,12 @@ public class PurchasedItems {
     }
 
     public boolean hasNext() {
-        boolean next = false;
         for (int i = 1; i < this.items.size(); i++) {
             if (this.items.get(i) != null) {
-                next = true;
-            } else {
-                next = false;
+                return true;
             }
         }
-        return next;
+        return false;
     }
 
     public StoreItem getNext() {
