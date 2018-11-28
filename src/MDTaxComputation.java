@@ -3,9 +3,10 @@ import java.util.GregorianCalendar;
 public class MDTaxComputation extends TaxComputationMethod {
   public double computeTax(PurchasedItems items, ReceiptDate date) {
     // calls private method taxHoliday as part of this computation
-    double tax = 0.0;
-    if(!taxHoliday()) {
-      
+    if(taxHoliday()) {
+      return 0.0;
+    } else {
+      return 0.06;
     }
   }
 

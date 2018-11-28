@@ -7,6 +7,7 @@ public class BestBuyReceiptMain {
   public static void main(String[] args) {
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     Date date = new Date();
+    formatter.format(date);
     PurchasedItems items = new PurchasedItems();
 
     // ReciptFactory rf = new ReceiptFactory();

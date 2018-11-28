@@ -1,10 +1,10 @@
 public class BasicReceipt implements Receipt {
     private StoreHeader storeHeader;
     private TaxComputationMethod tc;
-    private String date;
+    private Date date;
     private PurchasedItems items;
 
-    public BasicReceipt(PurchaseItem items, String date) {
+    public BasicReceipt(PurchaseItem items, Date date) {
         this.items = items;
         this.date = date;
     }
