@@ -24,7 +24,7 @@ public class BestBuyReceiptMain {
       StoreItem item = new StoreItem("2428", "Anker External Battery (20,000mAh)", "$49.99");
       items.addItem(item);
     }
-
+ 
   }
 
   public static String menu() {
