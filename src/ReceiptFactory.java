@@ -35,7 +35,7 @@ public class ReceiptFactory {
     br.setStoreHeader(storeHeader);
 
 
-    return receipt;
+    return br;
   }
 
 }
