@@ -21,6 +21,11 @@ public class ReceiptFactory {
   }
 
   public getReceipt(PurchasedItems items, Date date) {
+    // Upcasting br (Basic Receipt) to receipt to be able to return type receipt
+    Receipt receipt = new BasicReceipt();
+    br = receipt;
+
+    // Sets current date in desired format
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     date = new Date();
     formatter.format(date);
@@ -29,7 +34,8 @@ public class ReceiptFactory {
 
     br.setStoreHeader(storeHeader);
 
-    return br
+
+    return receipt;
   }
 
 }
