@@ -10,21 +10,26 @@ public class BestBuyReceiptMain {
     formatter.format(date);
     PurchasedItems items = new PurchasedItems();
 
-    // ReciptFactory rf = new ReceiptFactory();
+    ReciptFactory rf = new ReceiptFactory();
 
-    if ("4028".equals(menu())) {
+    String choice = menu();
+
+    if ("4028".equals(choice)) {
       StoreItem item = new StoreItem("4028", "Samsung S9 (unlocked) Midnight Black 64 GB", "$719.99");
       items.addItem(item);
-    }
-    if ("0915".equals(menu())) {
+    } else if ("0915".equals(choice)) {
       StoreItem item = new StoreItem("0915", "Samsung S9 Case (black)", "$39.99");
       items.addItem(item);
-    }
-    if ("2428".equals(menu())) {
+    } else if ("2428".equals(choice)) {
       StoreItem item = new StoreItem("2428", "Anker External Battery (20,000mAh)", "$49.99");
       items.addItem(item);
+    } else {
+      System.err.println("Invalid selection...Quitting");
+      System.exit(0);
     }
- 
+    
+    Receipt receipt = rf.getReceipt(items, date);
+    receipt.prtReceipt();
   }
 
   public static String menu() {
