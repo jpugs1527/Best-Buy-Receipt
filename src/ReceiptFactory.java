@@ -31,15 +31,15 @@ public class ReceiptFactory {
 
         Receipt receipt = (Receipt) br;
 
-        for (AddOn addon : addOns) {
-            if (addon.applies(items)) {
-                if (addon instanceof SecondaryHeading) {
-                    receipt = new PreDecorator(receipt, addon);
-                } else {
-                    receipt = new PostDecorator(receipt, addon);
-                }
-            }
-        }
+//        for (AddOn addon : addOns) {
+//            if (addon.applies(items, date)) {
+//                if (addon instanceof SecondaryHeading) {
+//                    receipt = new PreDecorator(receipt, addon);
+//                } else {
+//                    receipt = new PostDecorator(receipt, addon);
+//                }
+//            }
+//        }
         
         return receipt;
     }

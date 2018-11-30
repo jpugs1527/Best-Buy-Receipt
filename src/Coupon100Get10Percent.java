@@ -1,5 +1,5 @@
 public class Coupon100Get10Percent implements Rebate {
-  public boolean applies(PurchasedItems items) {
+  public boolean applies(PurchasedItems items, String date) {
         return items.getTotalCost() > 100;
   }
 

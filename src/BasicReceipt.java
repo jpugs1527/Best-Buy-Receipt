@@ -28,9 +28,9 @@ public class BasicReceipt implements Receipt {
         this.storeHeader.toString();
         System.out.printf("%-15s %n", this.date);
     
-        System.out.printf("%-15s %15d %n", "Total Sale", "$" + total);
-        System.out.printf("%-15s %15d", "MD Sales Tax (6%)", "$" + total * .06);
-        System.out.printf("%-15s %15d", "TOTAL SALE", "$" + total * 1.06);
+        System.out.printf("%-15s %15s %15f %n", "Total Sale", "$", total);
+        System.out.printf("%-15s %15s %15f %n", "MD Sales Tax (6%)", "$", total * .06);
+        System.out.printf("%-15s %15s %15f %n", "TOTAL SALE", "$", total * 1.06);
     }
 
 }
