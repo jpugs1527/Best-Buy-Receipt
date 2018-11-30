@@ -24,7 +24,6 @@ public class ReceiptFactory {
     }
 
     public Receipt getReceipt(PurchasedItems items, String date) {
-        // Upcasting br (Basic Receipt) to receipt to be able to return type receipt
         BasicReceipt br = new BasicReceipt(items, date);
 
         br.setTaxComputationMethod(taxComputationObjs[0]);
