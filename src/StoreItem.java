@@ -35,7 +35,7 @@ public class StoreItem {
         return this.itemDescription;
     }
 
-    public String getItemPrice() {
+    public double getItemPrice() {
         return Double.parseDouble(this.itemPrice);
     }
 

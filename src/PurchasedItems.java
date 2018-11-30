@@ -1,6 +1,8 @@
+
 import java.util.ArrayList;
 
 public class PurchasedItems {
+
     private ArrayList<StoreItem> items;
 
     public PurchasedItems() {
@@ -22,7 +24,7 @@ public class PurchasedItems {
     }
 
     public boolean containsItem(StoreItem itemCode) {
-        StoreItem matchItemCode = itemCode.getItemCode();
+        String matchItemCode = itemCode.getItemCode();
         for (int i = 0; i < items.size(); i++) {
             StoreItem indexItem = items.get(i);
             String indexItemCode = indexItem.getItemCode();
@@ -33,21 +35,12 @@ public class PurchasedItems {
         return false;
     }
 
-    public void reset() {
-        items.removeAll(items);
-    }
-
-    public boolean hasNext() {
-        for (int i = 1; i < this.items.size(); i++) {
-            if (this.items.get(i) != null) {
-                return true;
-            }
+    public void print() {
+        for (int i = 0; i < items.size(); i++) {
+            System.out.print(items.get(i).getItemCode() + "\n");
+            System.out.print(items.get(i).getItemDescription() + "\n");
+            System.out.print(items.get(i).getItemPrice() + "\n");
         }
-        return false;
-    }
-
-    public StoreItem getNext() {
-        StoreItem item = new StoreItem();
-        return item;
+        System.out.println("Total: " + getTotalCost());
     }
 }

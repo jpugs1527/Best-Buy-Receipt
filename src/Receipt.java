@@ -1,3 +1,3 @@
-public interface Recipt {
+public interface Receipt {
   public void prtReceipt();
 }

@@ -1,41 +1,48 @@
+
+import java.util.*;
+import java.io.*;
+import java.text.SimpleDateFormat;
+
 public class ReceiptFactory {
-  StoreHeader storeHeader;
-  BasicReceipt br;
-  private TaxComputationMethod[] taxComputationObjs = new TaxComputationMethod[1];
-  private AddOn[] addOns;
 
-  public ReceiptFactory(StoreHeader storeHeader, TaxComputationMethod[] taxComputationObjs, AddOn[] addOns) {
-    this.storeHeader = storeHeader;
-    this.taxComputationObjs = taxComputationObjs;
-    this.addOns = addOns;
-  }
+    StoreHeader storeHeader;
+    private TaxComputationMethod[] taxComputationObjs;
+    private AddOn[] addOns;
 
-  //TODO populate taxCompObjs
-  public void setTaxCompObjs() {
-    this.taxComputationObjs[1] = "md";
-  }
+    public ReceiptFactory() throws FileNotFoundException, IOException {
+        this.taxComputationObjs = new TaxComputationMethod[]{new MDTaxComputation()};
+        this.addOns = new AddOn[]{new Rebate1406(), new Coupon100Get10Percent(), new HolidayGreeting()};
 
+        FileInputStream fstream = new FileInputStream("config.txt");
+        BufferedReader buffRead = new BufferedReader(new InputStreamReader(fstream));
+        String street_addr = buffRead.readLine();
+        String state_code = buffRead.readLine();
+        String zip_code = buffRead.readLine();
+        String store_number = buffRead.readLine();
+        String phone_number = buffRead.readLine();
+        this.storeHeader = new StoreHeader(street_addr, zip_code, state_code, phone_number, store_number);
+    }
 
-  public void setStoreHeader() {
-    this.storeHeader = new StoreHeader("123 Main St.", "21455", "MD", "410-704-5555", "2014");
-  }
+    public Receipt getReceipt(PurchasedItems items, String date) {
+        // Upcasting br (Basic Receipt) to receipt to be able to return type receipt
+        BasicReceipt br = new BasicReceipt(items, date);
 
-  public getReceipt(PurchasedItems items, Date date) {
-    // Upcasting br (Basic Receipt) to receipt to be able to return type receipt
-    Receipt receipt = new BasicReceipt();
-    br = receipt;
+        br.setTaxComputationMethod(taxComputationObjs[0]);
+        br.setStoreHeader(storeHeader);
 
-    // Sets current date in desired format
-    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-    date = new Date();
-    formatter.format(date);
+        Receipt receipt = (Receipt) br;
 
-    br.setTaxComputationMethod(taxComputationObjs[1]);
-
-    br.setStoreHeader(storeHeader);
-
-
-    return br;
-  }
+        for (AddOn addon : addOns) {
+            if (addon.applies(items)) {
+                if (addon instanceof SecondaryHeading) {
+                    receipt = new PreDecorator(receipt, addon);
+                } else {
+                    receipt = new PostDecorator(receipt, addon);
+                }
+            }
+        }
+        
+        return receipt;
+    }
 
 }

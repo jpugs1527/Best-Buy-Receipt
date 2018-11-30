@@ -1,6 +1,6 @@
 public class Rebate1406 implements Rebate {
   public boolean applies(PurchasedItems items) {
-    StoreItem item = new StoreItem("1406");
+    StoreItem item = new StoreItem("1406", "Item 1406", "19.99");
     return items.containsItem(item);
   }
 

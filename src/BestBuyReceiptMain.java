@@ -1,16 +1,20 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.*;
+import java.io.*;
 
 public class BestBuyReceiptMain {
-  public static void main(String[] args) {
-    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-    Date date = new Date();
-    formatter.format(date);
+  public static void main(String[] args) throws IOException {
+    Scanner scan = new Scanner(System.in);
+    
+    String date = "";
+    int m, d, y = 0;
     PurchasedItems items = new PurchasedItems();
-
-    ReciptFactory rf = new ReceiptFactory();
+    System.out.print("Please enter the month (number): ");
+    m = scan.nextInt();
+    System.out.print("Please enter the day: ");
+    d = scan.nextInt();
+    System.out.print("Please enter the year: ");
+    y = scan.nextInt();
+    date = m + "/" + d + "/" + y;
 
     String choice = menu();
 
@@ -28,6 +32,7 @@ public class BestBuyReceiptMain {
       System.exit(0);
     }
     
+    ReceiptFactory rf = new ReceiptFactory();
     Receipt receipt = rf.getReceipt(items, date);
     receipt.prtReceipt();
   }
